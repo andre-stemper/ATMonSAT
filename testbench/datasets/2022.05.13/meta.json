@@ -1,0 +1,382 @@
+{
+  "comment": "",
+  "sources":{
+    "eps_data":   {
+      "comment":"",
+      "enabled": true,
+      "directory": [".", "satellite_logs"],
+      "filename":  "epsgeneraltelemetry.csv",
+      "delimiter": ",",
+      "decimal":   ".",
+      "encoding":  "unicode_escape",
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "13.05.2022 08:00:00.00",
+        "! dataframe_datetime": "13.05.2022 10:00:00.00"
+      }
+    },
+    "room_temperature_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "room_temperature_log.csv",
+      "delimiter": ";",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "time_correction": { 
+        "offset": {"hours": 1.0},
+        "! recorded_datetime":  "13.05.2022 10:00:00.00",
+        "! dataframe_datetime": "13.05.2022 10:00:00.00"
+      }
+    },
+    "table_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "table_log.csv",
+      "delimiter": "; ",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "add_sin_of_angle": true,
+      "wrap_angle": false,
+      "start_angle": 21.466029187565468,
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "13.05.2022 10:00:00.00",
+        "! dataframe_datetime": "13.05.2022 10:00:00.00"
+      }
+    }
+  },
+  "ranges": {
+    "all": {
+      "comment": "",
+      "start": null,
+      "stop": null,
+      "alpha": 0.0,
+      "color": "white"
+    },
+    "reboot": {
+      "comment": "",
+      "start": "13.05.2022 08:38:02.83",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "grey"
+    },
+    "experiment": {
+      "comment": "",
+      "start": "13.05.2022 10:00:00.00",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "lightblue"
+    },
+    "normal": {
+      "comment": "",
+      "start": "13.05.2022 11:00:00.00",
+      "stop":  "13.05.2022 14:30:00.00",
+      "alpha": 0.2,
+      "color": "green"
+    },
+    "abnormal": {
+      "comment": "",
+      "start":  "13.05.2022 10:00:00.00",
+      "stop": null,
+      "alpha": 0.2,
+      "color": "red"
+    }
+  },
+  "anomalies": {
+    "time_correction": {
+      "offset": {"hours": 0.0}
+    },
+    "data": [
+      {
+          "comment": "",
+          "start": "13.05.2022 10:17:00.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 10:25:08.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 12:08:35.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 12:46:19.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:17:58.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:19:05.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:20:00.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 10:17:00.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:22:12.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:23:59.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:27:39.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:29:29.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:32:15.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:35:09.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:42:33.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:45:25.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 13:49:23.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 15:30:13.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 15:36:30.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 15:42:42.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 15:51:04.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 15:56:38.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:02:42.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:08:10.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:19:23.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:27:26.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:35:17.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:43:54.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 16:53:27.00",
+          "duration": 0,
+          "power": 100,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:11:02.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:16:21.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:24:08.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:33:02.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:41:25.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:48:17.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 17:55:55.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 18:02:11.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 18:10:29.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 18:16:35.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 18:23:39.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      },
+      {
+          "comment": "",
+          "start": "13.05.2022 18:29:49.00",
+          "duration": 0,
+          "power": 50,
+          "angle": 0
+      }
+    ]
+  },
+  "processed_data": {}
+}

@@ -1,0 +1,4 @@
+ft download 4 10 0 1240 -out data\20220520T150750\epsgeneraltelemetry.dat
+delay 0
+parser data\20220520T150750\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220520T150750\epsgeneraltelemetry.csv
+delay 0

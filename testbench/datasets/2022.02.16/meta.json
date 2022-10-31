@@ -1,0 +1,95 @@
+{
+    "comment": "",
+    "sources":{
+        "eps_data":   {
+          "comment":"",
+          "enabled": true,
+          "directory": [".", "satellite_logs"],
+          "filename":  "epsgeneraltelemetry.csv",
+          "delimiter": ",",
+          "decimal":   ".",
+          "encoding":  "unicode_escape",
+          "time_correction": {
+            "!offset": {"hours": 1.0},
+            "recorded_datetime":  "07.01.2001 11:48:33.67",
+            "dataframe_datetime": "16.02.2022 10:26:33.00"
+          }
+        },
+        "room_temperature_data": {
+          "comment":"",
+          "enabled": false,
+          "directory": ["."],
+          "filename":  "room_temperature_log.csv",
+          "delimiter": ";",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "time_correction": { 
+            "offset": {"hours": 0.0},
+            "! recorded_datetime":  "16.02.2022 10:00:00.00",
+            "! dataframe_datetime": "16.02.2022 10:00:00.00"
+          }
+        },
+        "table_data": {
+          "comment":"",
+          "enabled": true,
+          "directory": ["."],
+          "filename":  "table_log.csv",
+          "delimiter": "; ",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "add_sin_of_angle": true,
+          "wrap_angle": false,
+          "start_angle": 0,
+          "time_correction": {
+            "offset": {"hours": 0.0},
+            "! recorded_datetime":  "16.02.2022 10:00:00.00",
+            "! dataframe_datetime": "16.02.2022 10:00:00.00"
+          }
+        }
+    },
+    "ranges": {
+        "all": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "white"
+        },
+        "reboot": {
+            "comment": "",
+            "start": "16.02.2022 09:33:42.79",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "grey"
+        },
+        "experiment": {
+            "comment": "",
+            "start": "16.02.2022 11:00:00.00",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "lightblue"
+        },
+        "normal": {
+            "comment": "",
+            "start": "16.02.2022 11:00:00.00",
+            "stop": null,
+            "alpha": 0.2,
+            "color": "green"
+        },
+        "abnormal - missing data": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "red"
+        }
+    },
+    "anomalies": {
+      "time_correction": {
+        "offset": {"hours": 0.0}
+      },
+      "data": [
+      ]
+    },
+    "processed_data": {}
+}

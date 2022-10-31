@@ -1,0 +1,50 @@
+# Files being edited
+*~
+*.swp
+*.swo
+
+# Darwin
+.DS_Store
+
+# Python 
+*.pyc
+__pycache__/
+
+# vscode
+.vscode
+
+# Make and build files
+*.lst
+*.o
+*.eep
+*.lss
+*.map
+*.sym
+
+# 
+*.elf
+*.hex
+*.exe
+
+#
+readme.html
+
+# Do not store doc
+build/*
+
+# Ignore 3dparty, generated and metadata
+firmwares/.metadata
+firmwares/3dparty
+firmwares/atmonsat_baremetal/atmonsat
+firmwares/atmonsat_freertos/atmonsat
+firmwares/atmonsat_native
+firmwares/atmonsat_common_sources/objs/*
+firmwares/atmonsat_common_sources/.ipynb_checkpoints
+firmwares/atmonsat_common_sources/calibration_tensor.npy
+
+# Ignore results
+testbench/results/*
+testbench/.ipynb_checkpoints
+
+# Do not store obsolete stuff
+_obsolete_/*

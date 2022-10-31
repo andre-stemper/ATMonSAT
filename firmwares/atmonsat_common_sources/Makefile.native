@@ -1,0 +1,85 @@
+
+all: atmonsat
+
+# Model and quantization
+atmonsat_model_quantize.py: atmonsat_model_quantize.ipynb
+	python3 -m nbconvert --to=python $<
+
+atmonsat_model.h atmonsat_model.cc: atmonsat_model_quantize.py atmonsat_model.h5
+	ipython3 atmonsat_model_quantize.py 
+
+# Tensorflow
+OBJS=./objs
+# (recursivesearch,<path>,<pattern>)
+recursivesearch=$(wildcard $1$2) $(foreach d,$(wildcard $1*),$(call recursivesearch,$d/,$2))
+TFSRCS := $(call recursivesearch,tensorflow/,*.cc)
+TFOBJS = $(TFSRCS:%.cc=${OBJS}/%.o)
+
+TFINC := tensorflow \
+		 tensorflow/third_party/flatbuffers/include \
+		 tensorflow/third_party/gemmlowp \
+		 tensorflow/third_party/issfft \
+		 tensorflow/third_party/ruy
+
+TFINCS=$(patsubst %, -I %, $(TFINC))
+
+ATMONSATSRC := main_native.cc \
+			   atmonsat_anomaly_detection.cc \
+		 	   atmonsat_model.cc \
+			   protocol_datalink_pipe.cc \
+			   atmonsat_testbench.cc \
+			   time_metric_native.cc
+
+ATINCS := atmonsat_anomaly_detection.h \
+			datawindow.h \
+			mahalanobis.h \
+			protocol_datalink_pipe.h \
+			atmonsat.h \
+			islcc.h \
+			matrix.h \
+			main_native.h \
+			protocol_definitions.h \
+			atmonsat_mahalanobis_precalculated_values.h \
+			islcc_interpolator.h \
+			protocol.h \
+			atmonsat_model.h \
+			datapoint.h \
+			linear_interpolation.h \
+			protocol_datalink.h \
+			time_metric.h \
+			time_metric_native.h
+
+ATMONSATOBJS = $(ATMONSATSRC:%.cc=${OBJS}/%.o)
+
+ifeq ($(PLACEBO), 1)
+PLACEBO_DEFINITION=-DPLACEBO
+endif
+
+PROFILE=
+# PROFILE=-pg
+
+ifeq ($(PLACEBO), 1)
+atmonsat: $(TFOBJS) ${ATMONSATOBJS} ${ATINCS}
+	@echo "assembling $@ ${PLACEBO}"
+	gcc ${PROFILE} ${PLACEBO_DEFINITION} -Wall -Wfatal-errors -O3 ${ATMONSATOBJS} -I. -lstdc++ -ldl -lm -o $@
+else
+atmonsat: $(TFOBJS) ${ATMONSATOBJS} ${ATINCS}
+	@echo "assembling $@ ${PLACEBO}"
+	gcc ${PROFILE} ${PLACEBO_DEFINITION} -Wall -Wfatal-errors -O3 $(TFOBJS) ${ATMONSATOBJS} ${TFINCS} -I. -lstdc++ -ldl -lm -o $@
+endif
+
+${OBJS}/%.o: %.cc 
+	@mkdir -p $(shell dirname $@)
+	@echo compiling obj $@ from $<
+	gcc ${PROFILE} ${PLACEBO_DEFINITION} -Wall -Wfatal-errors -c -O3 $< ${TFINCS} -I. -o $@
+
+# weak cleanup without rebuilding tensorflow
+clean:
+	rm ./atmonsat
+	rm ./objs/*.o
+
+# clean up
+clean-all:
+	rm -f ./quantize.py
+	rm -f ./atmonsat
+	rm -f -r ./objs

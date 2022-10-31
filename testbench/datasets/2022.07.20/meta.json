@@ -1,0 +1,123 @@
+{
+  "comment": "",
+  "sources":{
+    "eps_data":   {
+      "comment":"",
+      "enabled": true,
+      "directory": [".", "satellite_logs"],
+      "filename":  "epsgeneraltelemetry.csv",
+      "delimiter": ",",
+      "decimal":   ".",
+      "encoding":  "unicode_escape",
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "20.07.2022 08:00:00.00",
+        "! dataframe_datetime": "20.07.2022 10:00:00.00"
+      }
+    },
+    "room_temperature_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "room_temperature_log.csv",
+      "delimiter": ";",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "time_correction": { 
+        "offset": {"hours": 1.0},
+        "! recorded_datetime":  "20.07.2022 10:00:00.00",
+        "! dataframe_datetime": "20.07.2022 10:00:00.00"
+      }
+    },
+    "table_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "table_log.csv",
+      "delimiter": "; ",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "add_sin_of_angle": true,
+      "wrap_angle": false,
+      "start_angle": 212.28592734753448,
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "20.07.2022 10:00:00.00",
+        "! dataframe_datetime": "20.07.2022 10:00:00.00"
+      }
+    }
+  },
+  "ranges": {
+    "all": {
+      "comment": "",
+      "start": null,
+      "stop": null,
+      "alpha": 0.0,
+      "color": "white"
+    },
+    "reboot": {
+      "comment": "",
+      "start": "20.07.2022 08:15:52.852",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "grey"
+    },
+    "experiment": {
+      "comment": "",
+      "start": "20.07.2022 10:17:55.000",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "lightblue"
+    },
+    "normal": {
+      "comment": "",
+      "start": "20.07.2022 10:17:55.00",
+      "stop":  "20.07.2022 11:45:00.00",
+      "alpha": 0.2,
+      "color": "green"
+    },
+    "abnormal": {
+      "comment": "",
+      "start":  "20.07.2022 11:45:00.00",
+      "stop": null,
+      "alpha": 0.2,
+      "color": "red"
+    }
+  },
+  "anomalies": {
+    "time_correction": {
+      "offset": {"hours": 0.0}
+    },
+    "data":[
+      {
+        "comment": "",
+        "start": "20.07.2022 11:58:35.00",
+        "duration": 30,
+        "power": 100,
+        "angle": 42.86
+      },
+      {
+        "comment": "accident",
+        "start": "20.07.2022 12:31:39.00",
+        "duration": 30,
+        "power": 100,
+        "angle": 0
+      },
+      {
+        "comment": "accident",
+        "start": "20.07.2022 12:39:49.00",
+        "duration": 30,
+        "power": 100,
+        "angle": 0
+      },
+      {
+        "comment": "",
+        "start": "20.07.2022 14:38:26.00",
+        "duration": 30,
+        "power": 100,
+        "angle": 321.8
+      }
+    ]
+  },
+  "processed_data": {}
+}

@@ -1,0 +1,20 @@
+ft download 4 10 0 2 -out data\20220603T085235\epsgeneraltelemetry.dat
+delay 0
+parser data\20220603T085235\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220603T085235\epsgeneraltelemetry.csv
+delay 0
+ft download 4 10 0 2 -out data\20220603T085235\epsgeneraltelemetry.dat
+delay 0
+parser data\20220603T085235\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220603T085235\epsgeneraltelemetry.csv
+delay 0
+ft download 4 10 0 2 -out data\20220603T085235\epsgeneraltelemetry.dat
+delay 0
+parser data\20220603T085235\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220603T085235\epsgeneraltelemetry.csv
+delay 0
+ft download 4 10 0 2 -out data\20220603T085235\epsgeneraltelemetry.dat
+delay 0
+parser data\20220603T085235\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220603T085235\epsgeneraltelemetry.csv
+delay 0
+ft download 4 10 0 2 -out data\20220603T085235\epsgeneraltelemetry.dat
+delay 0
+parser data\20220603T085235\epsgeneraltelemetry.dat ..\telemetryDecodingStructures\4_EPSGeneralTelemetry.c data\20220603T085235\epsgeneraltelemetry.csv
+delay 0

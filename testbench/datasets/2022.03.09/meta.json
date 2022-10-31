@@ -1,0 +1,95 @@
+{
+    "comment": "Warning: Time alignment probably incorrect. EPS time wrong.",
+    "sources":{
+        "eps_data":   {
+          "comment":"date set wrong! 29:01:2001",
+          "enabled": true,
+          "directory": [".", "satellite_logs"],
+          "filename":  "epsgeneraltelemetry.csv",
+          "delimiter": ",",
+          "decimal":   ".",
+          "encoding":  "unicode_escape",
+          "time_correction": {
+            "! offset": {"hours": 1.0},
+            "recorded_datetime":  "28.01.2001 23:12:32.223",
+            "dataframe_datetime": "09.03.2022 10:56:00.00"
+          }
+        },
+        "room_temperature_data": {
+          "comment":"",
+          "enabled": true,
+          "directory": ["."],
+          "filename":  "room_temperature_log.csv",
+          "delimiter": ";",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "time_correction": { 
+            "offset": {"hours": 0.0},
+            "! recorded_datetime":  "09.03.2022 10:00:00.00",
+            "! dataframe_datetime": "09.03.2022 10:00:00.00"
+          }
+        },
+        "table_data": {
+          "comment":"",
+          "enabled": true,
+          "directory": ["."],
+          "filename":  "table_log.csv",
+          "delimiter": "; ",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "add_sin_of_angle": true,
+          "wrap_angle": true,
+          "start_angle": 160.63686938275163,
+          "time_correction": {
+            "offset": {"hours": 1.0},
+            "! recorded_datetime":  "09.03.2022 10:00:00.00",
+            "! dataframe_datetime": "09.03.2022 10:00:00.00"
+          }
+        }
+    },
+    "ranges": {
+        "all": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "white"
+        },
+        "reboot": {
+            "comment": "",
+            "start": "09.03.2022 09:56:00.00",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "grey"
+        },
+        "experiment": {
+            "comment": "",
+            "start": "09.03.2022 12:30:00.00",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "lightblue"
+        },
+        "normal": {
+            "comment": "",
+            "start": "09.03.2022 13:00:00.00",
+            "stop": null,
+            "alpha": 0.2,
+            "color": "green"
+        },
+        "abnormal - missing information": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "red"
+        }
+    },
+    "anomalies": {
+      "time_correction": {
+        "offset": {"hours": 0.0}
+      },
+      "data": [
+      ]
+    },
+    "processed_data": {}
+}

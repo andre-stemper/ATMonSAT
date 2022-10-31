@@ -1,0 +1,109 @@
+{
+  "comment": "",
+  "sources":{
+    "eps_data":   {
+      "comment":"",
+      "enabled": true,
+      "directory": [".", "satellite_logs"],
+      "filename":  "epsgeneraltelemetry.csv",
+      "delimiter": ",",
+      "decimal":   ".",
+      "encoding":  "unicode_escape",
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "15.06.2022 08:00:00.00",
+        "! dataframe_datetime": "15.06.2022 10:00:00.00"
+      }
+    },
+    "room_temperature_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "room_temperature_log.csv",
+      "delimiter": ";",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "time_correction": { 
+        "offset": {"hours": 1.0},
+        "! recorded_datetime":  "15.06.2022 10:00:00.00",
+        "! dataframe_datetime": "15.06.2022 10:00:00.00"
+      }
+    },
+    "table_data": {
+      "comment":"",
+      "enabled": true,
+      "directory": ["."],
+      "filename":  "table_log.csv",
+      "delimiter": "; ",
+      "decimal":   ",",
+      "encoding":  "unicode_escape",
+      "add_sin_of_angle": true,
+      "wrap_angle": false,
+      "start_angle": 55.444793357158105,
+      "time_correction": {
+        "offset": {"hours": 2.0},
+        "! recorded_datetime":  "15.06.2022 10:00:00.00",
+        "! dataframe_datetime": "15.06.2022 10:00:00.00"
+      }
+    }
+  },
+  "ranges": {
+    "all": {
+      "comment": "",
+      "start": null,
+      "stop": null,
+      "alpha": 0.0,
+      "color": "white"
+    },
+    "reboot": {
+      "comment": "",
+      "start": "15.06.2022 08:10:24.26",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "grey"
+    },
+    "experiment": {
+      "comment": "",
+      "start": "15.06.2022 08:30:00.00",
+      "stop": null,
+      "alpha": 0.1,
+      "color": "lightblue"
+    },
+    "normal": {
+      "comment": "",
+      "start": "15.06.2022 09:55:00.00",
+      "stop":  "15.06.2022 14:45:00.00",
+      "alpha": 0.2,
+      "color": "green"
+    },
+    "abnormal": {
+      "comment": "",
+      "start": "15.06.2022 14:45:00.00",
+      "stop": null,
+      "alpha": 0.2,
+      "color": "red"
+    }
+  },
+  "anomalies": {
+    "time_correction": {
+      "offset": {"hours": 0.0}
+    },
+    "data": [
+      {
+        "comment": "",
+        "start": "15.06.2022 15:05:00.00",
+        "duration": 60,
+        "power": 100,
+        "angle": 167.5
+      },
+      {
+        "comment": "",
+        "start": "15.06.2022 15:46:29.00",
+        "duration": 60,
+        "power": 100,
+        "angle": 335.01
+      }
+    ]
+  },
+  "processed_data": {}
+}

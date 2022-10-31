@@ -1,0 +1,2 @@
+../atmonsat/tensorflow/tensorflow/lite/micro/cortex_m_generic/debug_log.cc:29:6:void RegisterDebugLogCallback(void (*)(const char*))	0	static
+../atmonsat/tensorflow/tensorflow/lite/micro/cortex_m_generic/debug_log.cc:33:6:void DebugLog(const char*)	0	static
