@@ -10,7 +10,7 @@ The AtMonSAT anomaly detection algorithm has been implemented in C++ in a generi
 It has been embedded in a testbed to allow verification of the performance and results.
 Only a small part (e.g. the data link layer and the time metric) of this testbed is hardware dependent and must be exchanged for the PC and microcontroller versions.
 
-![General overview and differences of local and remote implementations](./doc/testbed_overview_remote_local.png)
+![General overview and differences of local and remote implementations](./doc/testbed_overview_remote_local.png)  
 *General overview and differences of the local and remote implementations*
 
 
