@@ -141,7 +141,7 @@ cd atmonsat_native
 make
 ~~~~~
 
-### STM32
+### STM32 - Baremetal
 ~~~~~
 cd firmwares
 ./prepare.sh baremetal
@@ -152,6 +152,35 @@ Then in STM32CubeIDE
 - Import firmware (e.g. atmonsat_baremetal) into this workspace 
 - Build 
 
+If the atmonsat directory is not automatically detected by STM32CubeIDE:
+- With the project selected, press F5 to refresh the view.
+- On the atmonsat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
+
+### STM32 - FreeRTOS 
+~~~~~
+cd firmwares
+./prepare.sh freertos
+~~~~~
+
+Then in STM32CubeIDE
+- Create workspace 
+- Import firmware (e.g. atmonsat_freertos) into this workspace 
+- Build 
+
+If the atmonsat directory is not automatically detected by STM32CubeIDE:
+- With the project selected, press F5 to refresh the view.
+- On the atmonsat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
+
+## Compilers
+
+| Firmware  | Build               | Compiler          | C++ Standard | Version          |
+|:--------  |:-----               |:--------          |:--------     |:-------          |
+| Native    | Make                | gcc               | 17           | 11.3.0           |
+| Baremetal | STM32CubeIDE - Make | arm-none-eabi-gcc | 11           | 10.3.1 20210824  |
+| FreeRTOS  | STM32CubeIDE - Make | arm-none-eabi-gcc | 11           | 10.3.1 20210824  |
+
+C++11 is sufficient to compile this code.  
+All firmwares have been compiled on Ubuntu 22.04.1 LTS 
 
 ## Communication Diagram
 ![Diagram](./doc/protocol.png)

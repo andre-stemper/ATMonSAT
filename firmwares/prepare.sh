@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 TENSORFLOW_LITE_MICRO_GITHUB_URL=https://github.com/tensorflow/tflite-micro.git
 
