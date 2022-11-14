@@ -1,4 +1,4 @@
-# C++ Implementation of the AtMonSAT Anomaly Detection Algorithm
+# C++ Implementation of the AtMonSat Anomaly Detection Algorithm
 
 > The project was partly funded by the European Space Agency (ESA) under the Open Space Innovation Platform (OSIP), under which ESA organizes and launches Campaigns and Channels to seek ideas related to space research, otherwise known as ESAIdeas.
 > Reference: 
@@ -6,7 +6,7 @@
 > ESA activity description No.~I-2020-03332
 
 
-The AtMonSAT anomaly detection algorithm has been implemented in C++ in a generic way such that it can be compiled for a PC as well as targeted to a microcontroller (e.g. STM32H743).  
+The AtMonSat anomaly detection algorithm has been implemented in C++ in a generic way such that it can be compiled for a PC as well as targeted to a microcontroller (e.g. STM32H743).  
 It has been embedded in a testbed to allow verification of the performance and results.
 Only a small part (e.g. the data link layer and the time metric) of this testbed is hardware dependent and must be exchanged for the PC and microcontroller versions.
 
@@ -19,7 +19,7 @@ The testbed consists of a frontend and backend. The frontend is running on the h
 
 
 ### Frontend
-The testbed frontend consists of a Jupyter notebook (*testbench/atmonsat_testbench.ipynb*) to control the experiment and to record and visualize the results. This notebook allows selecting the connection target (local or remote experiment), selecting the dataset and dataset range ('experiment', 'normal', 'anomaly') to be send to the target and changing the algorithm settings.
+The testbed frontend consists of a Jupyter notebook (*testbench/AtMonSat_testbench.ipynb*) to control the experiment and to record and visualize the results. This notebook allows selecting the connection target (local or remote experiment), selecting the dataset and dataset range ('experiment', 'normal', 'anomaly') to be send to the target and changing the algorithm settings.
 
 All settings and results are stored in a unique (timestamped) directory in the results subdirectory.
 
@@ -137,7 +137,7 @@ Aggregated data is stored inside the measurements directory.
 ~~~~~
 cd firmwares
 ./prepare.sh native
-cd atmonsat_native
+cd AtMonSat_native
 make
 ~~~~~
 
@@ -149,12 +149,12 @@ cd firmwares
 
 Then in STM32CubeIDE
 - Create workspace 
-- Import firmware (e.g. atmonsat_baremetal) into this workspace 
+- Import firmware (e.g. AtMonSat_baremetal) into this workspace 
 - Build 
 
-If the atmonsat directory is not automatically detected by STM32CubeIDE:
+If the AtMonSat directory is not automatically detected by STM32CubeIDE:
 - With the project selected, press F5 to refresh the view.
-- On the atmonsat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
+- On the AtMonSat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
 
 ### STM32 - FreeRTOS 
 ~~~~~
@@ -164,12 +164,12 @@ cd firmwares
 
 Then in STM32CubeIDE
 - Create workspace 
-- Import firmware (e.g. atmonsat_freertos) into this workspace 
+- Import firmware (e.g. AtMonSat_freertos) into this workspace 
 - Build 
 
-If the atmonsat directory is not automatically detected by STM32CubeIDE:
+If the AtMonSat directory is not automatically detected by STM32CubeIDE:
 - With the project selected, press F5 to refresh the view.
-- On the atmonsat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
+- On the AtMonSat folder: Select Properties. Under "C/C++ Build" check that "Exclude resource from build" is not selected. Apply.
 
 ## Compilers
 
@@ -181,6 +181,11 @@ If the atmonsat directory is not automatically detected by STM32CubeIDE:
 
 C++11 is sufficient to compile this code.  
 All firmwares have been compiled on Ubuntu 22.04.1 LTS 
+
+The python3 version used is 3.10.6. 
+Jupyter has core version 4.10.0 running on iPython 8.3.0.
+
+TF lite micro version used is commit 63510bb55e143987656ae3400c2463bdfc276c55.
 
 ## Communication Diagram
 ![Diagram](./doc/protocol.png)

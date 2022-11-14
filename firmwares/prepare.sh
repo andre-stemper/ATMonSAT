@@ -1,8 +1,12 @@
 #!/usr/bin/env bash
 
 TENSORFLOW_LITE_MICRO_GITHUB_URL=https://github.com/tensorflow/tflite-micro.git
+TENSORFLOW_LITE_MICRO_COMMIT_ID=63510bb55e143987656ae3400c2463bdfc276c55
+TENSORFLOW_LITE_MICRO_DIRECTORY=tflite-micro
 
 CURRENT_WORKING_DIRECTORY=$(pwd)
+
+HOW_TO_MESSAGE=
 
 case "$1" in
 native)
@@ -56,6 +60,7 @@ native)
     declare -A ATMONSAT_MOVE_INSIDE_TARGET=(  )
     #
     ATMONSAT_REMOVE=(${TENSORFLOW_DISTILLED_DIRECTORY}/tensorflow/lite/micro/debug_log.cc)
+    HOW_TO_MESSAGE=to compile change to ./atmonsat_native directory and run make
     ;;
 
 clean-native)
@@ -115,6 +120,7 @@ baremetal)
     #
     declare -A ATMONSAT_COPY_INSIDE_TARET=( [atmonsat/tensorflow/third_party/cmsis/CMSIS/Core/Include/cmsis_gcc.h]=Drivers/CMSIS/Include/cmsis_gcc.h )
     declare -A ATMONSAT_MOVE_INSIDE_TARGET=(  )
+    HOW_TO_MESSAGE=to build import the atmonsat_baremetal project into STM32CubeIDE and build.
     ;;
 
 clean-baremetal)
@@ -234,6 +240,7 @@ freertos)
     #
     ATMONSAT_REMOVE=(${TENSORFLOW_DISTILLED_DIRECTORY}/tensorflow/lite/micro/cortex_m_generic/debug_log.cc)
     #
+    HOW_TO_MESSAGE=to build import the atmonsat_freertos project into STM32CubeIDE and build.
     ;;
 
 clean-freertos)
@@ -316,20 +323,59 @@ mkdir --parents ${TENSORFLOW_DISTILLED_DIRECTORY}
 mkdir --parents ${TENSORFLOW_GENERATE_DIRECTORY}
 
 # clone tensorflow lite micro from github
-echo "fetching tensorflow lite micro from ${TENSORFLOW_LITE_MICRO_GITHUB_URL}"
 cd ${TENSORFLOW_DIRECTORY}
-
-if [ ! -d "./tflite-micro" ]; then
+if [ ! -d "./{TENSORFLOW_LITE_MICRO_DIRECTORY}" ]; then
     echo "cloning tensorflow lite micro from ${TENSORFLOW_LITE_MICRO_GITHUB_URL}"
-    git clone --recursive --depth 1 ${TENSORFLOW_LITE_MICRO_GITHUB_URL}
+    git clone --recursive ${TENSORFLOW_LITE_MICRO_GITHUB_URL}
     if [ $? -eq 1 ]; then
-        echo "aborting"
+        echo "failed to clone tf lite micro. aborting"
         exit 1
     fi
 fi
-cd tflite-micro
 
-# generate one of the examples
+# change into tf lite micro directory
+cd ${TENSORFLOW_LITE_MICRO_DIRECTORY}
+
+# checkout commit
+while true; do
+    echo "--"
+    echo "this release has been tested with tensorflow lite micro commit"
+    echo "${TENSORFLOW_LITE_MICRO_COMMIT_ID}"
+    echo "do you want to checkout this commit or try the newest release?"
+    read -p "[t(his)| m(ain) | b(ash for manual checkout)]" answer
+    case $answer in
+        # the specified commit 
+        [Tt]* ) 
+            git checkout ${TENSORFLOW_LITE_MICRO_COMMIT_ID}
+            if [ $? -eq 1 ]; then
+                echo "failed to checkout commit id. aborting"
+                exit 1
+            fi
+            break ;;
+        # the head
+        [Mm]* ) 
+            git checkout main
+            if [ $? -eq 1 ]; then
+                echo "failed to branch. aborting"
+                exit 1
+            fi
+            break ;;
+        # open a bash shell an checkout manually
+        [Bb]* ) 
+            git status
+            echo "---"
+            echo "checkout example:"
+            echo "git checkout -b atmonsat ${TENSORFLOW_LITE_MICRO_COMMIT_ID}"
+            echo ""
+            echo "when done type 'exit' <enter> to continue"
+            echo "---"
+            bash -c "exec bash"
+            break ;; 
+        * ) echo "answer not supported.";;
+    esac
+done
+
+# generate one of the tf lite micro examples
 echo "preparing tensorflow lite micro"
 EXAMPLE=hello_world
 make -f tensorflow/lite/micro/tools/make/Makefile ${ATMONSAT_TARGET} ${ATMONSAT_TARGET_ARCH} ${ATMONSAT_OPTIONS} microlite
@@ -338,6 +384,7 @@ if [ $? -eq 1 ]; then
     exit 1
 fi
 
+# create tflm tree 
 python3 tensorflow/lite/micro/tools/project_generation/create_tflm_tree.py --makefile_options="${ATMONSAT_TARGET} ${ATMONSAT_TARGET_ARCH} ${ATMONSAT_OPTIONS}" --examples ${EXAMPLE} ${TENSORFLOW_GENERATE_DIRECTORY}/
 if [ $? -eq 1 ]; then
     echo "aborting"
@@ -351,7 +398,6 @@ cp -r ${TENSORFLOW_GENERATE_DIRECTORY}/third_party ${TENSORFLOW_DISTILLED_DIRECT
 cp -r ${TENSORFLOW_GENERATE_DIRECTORY}/tensorflow ${TENSORFLOW_DISTILLED_DIRECTORY}/
 cp ${TENSORFLOW_GENERATE_DIRECTORY}/LICENSE ${TENSORFLOW_DISTILLED_DIRECTORY}/
 
-# declare -A ATMONSAT_COPY_INSIDE_TARET=( [atmonsat/tensorflow/third_party/cmsis/CMSIS/Code/Include/core_gcc.h]=Drivers/CMSIS/Include/core_gcc.h [aatmonsat/tensorflow/third_party/cmsis/CMSIS/Code/Include/core_gcc.h]=Drivers/CMSIS/Include/core_gcc.h )
 for FROM in "${!ATMONSAT_COPY_INSIDE_TARET[@]}"; do
     TO=${ATMONSAT_COPY_INSIDE_TARET[${FROM}]}
     if [ -e "${ATMONSAT_FIRMWARE_ROOT}/${FROM}" ] 
@@ -383,4 +429,5 @@ for value in ${ATMONSAT_REMOVE[@]}; do
 done
 
 echo "all files collected in ${ATMONSAT_TARGET_DIRECTORY}"
+echo "${HOW_TO_MESSAGE}"
 exit 0
