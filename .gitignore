@@ -3,8 +3,11 @@
 *.swp
 *.swo
 
-# Darwin
-.DS_Store
+**/__MACOSX/
+**/.DS_Store
+**/.Spotlight-V100
+**/.Trashes
+**/Thumbs.db
 
 # Python 
 *.pyc
@@ -44,7 +47,7 @@ firmwares/atmonsat_common_sources/calibration_tensor.npy
 
 # Ignore results
 testbench/results/*
-testbench/.ipynb_checkpoints
+**/.ipynb_checkpoints
 
 # Do not store obsolete stuff
 _obsolete_/*

@@ -1,0 +1,109 @@
+{
+    "comment": "Repositions lights after 13:08:13.",
+    "sources":{
+        "eps_data":   {
+          "comment":"",
+          "enabled": true,
+          "directory": [".", "satellite_logs"],
+          "filename":  "epsgeneraltelemetry.csv",
+          "delimiter": ",",
+          "decimal":   ".",
+          "encoding":  "unicode_escape",
+          "time_correction": {
+            "offset": {"hours": 2.0},
+            "! recorded_datetime":  "20.05.2022 08:00:00.00",
+            "! dataframe_datetime": "20.05.2022 10:00:00.00"
+          }
+        },
+        "room_temperature_data": {
+          "comment":"",
+          "enabled": true,
+          "directory": ["."],
+          "filename":  "room_temperature_log.csv",
+          "delimiter": ";",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "time_correction": { 
+            "offset": {"hours": 1.0},
+            "! recorded_datetime":  "20.05.2022 10:00:00.00",
+            "! dataframe_datetime": "20.05.2022 10:00:00.00"
+          }
+        },
+        "table_data": {
+          "comment":"",
+          "enabled": true,
+          "directory": ["."],
+          "filename":  "table_log.csv",
+          "delimiter": "; ",
+          "decimal":   ",",
+          "encoding":  "unicode_escape",
+          "add_sin_of_angle": true,
+          "wrap_angle": false,
+          "start_angle": 0,
+          "time_correction": {
+            "offset": {"hours": 2.0},
+            "! recorded_datetime":  "20.05.2022 10:00:00.00",
+            "! dataframe_datetime": "20.05.2022 10:00:00.00"
+          }
+        }
+    },
+    "ranges": {
+        "all": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "white"
+        },
+        "reboot": {
+            "comment": "",
+            "start": "20.05.2022 08:57:12.51",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "grey"
+        },
+        "experiment": {
+            "comment": "",
+            "start": "20.05.2022 13:40:00.00",
+            "stop": null,
+            "alpha": 0.1,
+            "color": "lightblue"
+        },
+        "normal": {
+            "comment": "",
+            "start": "20.05.2022 13:40:00.00",
+            "stop":  null,
+            "alpha": 0.2,
+            "color": "green"
+        },
+        "abnormal - missing information": {
+            "comment": "",
+            "start": null,
+            "stop": null,
+            "alpha": 0.0,
+            "color": "red"
+        }
+    },
+    "anomalies": {
+      "time_correction": {
+        "offset": {"hours": 0.0}
+      },
+      "data":[
+        {
+          "comment": "",
+          "start": "20.05.2022 17:44:35.00",
+          "duration": 15,
+          "power": 100,
+          "angle": 67.75
+        },
+        {
+          "comment": "",
+          "start": "20.05.2022 19:14:37.00",
+          "duration": 15,
+          "power": 100,
+          "angle": 67.74
+        }
+      ]
+    },
+    "processed_data": {}
+}

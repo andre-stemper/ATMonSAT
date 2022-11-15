@@ -1,0 +1,1 @@
+pr parse data\20220513T084318\adcstelemetry1.dat ..\telemetryDecodingStructures\2_ADCSTelemetry.c data\20220513T084318\adcstelemetry1.csv
