@@ -11,7 +11,7 @@ For the chosen model architecture:
 
 1) the leave-one-out procedure (i.e., cross-validation) is executed to collect Euclidean and Mahalanobis error samples;
 
-2)  the error thresholds values corresponding to chosen statistical significance level are computed;
+2) the error thresholds values corresponding to chosen statistical significance level are computed;
 
 2) the chosen model architecture is trained on all training normal datasets;
 
@@ -26,11 +26,19 @@ For quantitative performance evaluation, various metrics are considered:
 
 ---
 
-The aux_notebooks directory contains auxiliary notebooks:
- - function_library.ipynb: definitions of various functions used for model trainig, validation, and testing
- - models.ipynb: definitions of different deep-learning model architectures
- - error_thresholds_determination.ipynb: executed in each iteration of the leave-one-out test procedure; trains the chosen model architecture on all but one training normal datasets and performs inference on the excluded normal dataset to collect samples of Euclidean and Mahalanobis errors
- - train_model.ipynb: executed to train the chosen model architecture on all training datasets; the trained model is saved in a .h5 file.
- - detect_anomalies.ipynb: executed on each abnormal dataset to perform inference with the trained model and to compute the Euclidean and Mahalanobis errors. 
+The run_saved_model.ipynb Jupyter notebook provides code which allows to load a saved model and to run it on the anomalous datasets for anomaly detection.
 
-The error_thresholds_determination.ipynb, train_model.ipynb, and detect_anomalies.ipynb notebooks in the aux_notebooks directory are not self-contained and can only be run by calls from the atmonsat_model_training.ipynb notebook.
+ - The folder saved_models contains files with different deep-learning models for the anomaly detection algorithm considered in the AtMonSat project.
+ - The folder saved_results contains saved plots with results obtained with different deep-learning models considered in the AtMonSat project.
+
+---
+
+The aux_notebooks directory contains auxiliary notebooks:
+ - function_library.ipynb: definitions of various functions used for model trainig, validation, and testing;
+ - models.ipynb: definitions of different deep-learning model architectures;
+ - error_thresholds_determination.ipynb: executed in each iteration of the leave-one-out test procedure; trains the chosen model architecture on all but one training normal datasets and performs inference on the excluded normal dataset to collect samples of Euclidean and Mahalanobis errors;
+ - train_model.ipynb: executed to train the chosen model architecture on all training datasets; the trained model is saved in a .h5 file;
+ - detect_anomalies.ipynb: executed on each abnormal dataset to perform inference with the trained model and to compute the Euclidean and Mahalanobis errors;
+ - atmonsat_anomaly_detection.ipynb: runs the anomaly detection algorithm with a loaded model on the anomalous datasets.
+
+The error_thresholds_determination.ipynb, train_model.ipynb, and detect_anomalies.ipynb notebooks in the aux_notebooks directory are not self-contained and can only be run by calls from the atmonsat_model_training.ipynb notebook. The atmonsat_anomaly_detection.ipynb notebook in the aux_notebooks directory is not self-contained and is called from the run_saved_model.ipynb notebook.
